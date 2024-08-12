@@ -1,0 +1,12 @@
+
+.register-form{
+    color: white;
+    min-height: 85vh;
+}
+
+
+@media (min-width: 922px) {
+    .register-form {
+        max-width: 40% ;
+    }
+}

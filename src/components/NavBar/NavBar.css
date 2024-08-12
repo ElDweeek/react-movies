@@ -1,0 +1,14 @@
+
+.navbar-nav a ,
+.Nav-Holder a{
+    color: black;
+    text-decoration: none;
+    &:hover {
+        scale: 1.02;
+    }
+}
+
+a.active {
+    color: white;
+    background-color: rgb(42, 41, 41);
+}

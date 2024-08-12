@@ -1,0 +1,21 @@
+.card-container{
+    background-color: #444 !important;
+    color: white !important;
+    &:hover {
+        scale: 1.05;
+    }
+}
+
+a.page-link {
+    background-color: #444;
+    border-color: #777;
+}
+
+span.add-wish {
+    padding: 4px;
+    border-radius: 50%;
+    &:hover {
+        background-color: #777;
+        color: red;
+    }
+}

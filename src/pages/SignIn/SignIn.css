@@ -1,0 +1,11 @@
+
+.signin-form{
+    color: white;
+    min-height: 85vh;
+}
+
+@media (min-width: 922px) {
+    .signin-form {
+        max-width: 40% ;
+    }
+}

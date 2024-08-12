@@ -1,0 +1,12 @@
+.sub-nav {
+    color: white;
+    background-color: #666;
+    padding: 20px 0;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.badge {
+    top: 0;
+    right: -50%;
+}
