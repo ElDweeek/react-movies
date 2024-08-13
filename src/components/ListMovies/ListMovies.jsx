@@ -8,6 +8,7 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import { useDispatch } from 'react-redux'
 import { AddToWish } from '../../Redux/Actions/WishListAction.js'
 import './ListMovies.css'
+import { apiKey, apiUrl } from '../../apiConfig.js';
 // import 'bootstrap/dist/css/bootstrap.min.css'
 
 const ListMovies = () => {
@@ -16,12 +17,11 @@ const ListMovies = () => {
   const [page, setPage] = useState(1)
 
 
-  const apiUrl = `https://api.themoviedb.org/3/movie/popular?api_key=29cf44b93ca83bf48d9356395476f7ad`;
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(apiUrl, { params: { page } });
+        const res = await axios.get(`${apiUrl}?api_key=${apiKey}`, { params: { page } });
         setData({ films: res.data.results, totalPages: res.data.total_pages });
       } catch (error) {
         console.log(error);
@@ -39,26 +39,21 @@ const ListMovies = () => {
   const handleCardClick = (id) => {
     history.push(`/movie/${id}`);
   };
-  const [num, setNum] = useState(0);
+
+
   const dispatch = useDispatch();
-  
+
   const addToWish = (filmID) => {
-    // Get the current wishList from local storage or initialize it as an empty array
     const storedMovies = JSON.parse(localStorage.getItem('wishList')) || [];
   
-    // Check if the film is already in the wishList
     if (storedMovies.some(storedFilm => storedFilm === filmID)) {
       console.log('Already in local storage');
     } else {
-      // Add the new film to the wishList
       storedMovies.push(filmID);
   
-      // Save the updated wishList back to local storage
       localStorage.setItem('wishList', JSON.stringify(storedMovies));
-  
-      // Dispatch the action to update the wish list count
-      setNum(prevNum => prevNum + 1);
-      dispatch(AddToWish(num + 1));  // Pass the updated num value
+      
+      dispatch(AddToWish(storedMovies.length));
     }
   };
   console.log(data.films, data.totalPages);
